@@ -8,7 +8,7 @@ import { handle } from 'frog/vercel'
 
 
 const baseUrl = "https://warpcast.com/~/compose";
-const text = "Mint Glo Dollars NFTs 🍄\nFrame by @0x94t3z.eth";
+const text = "Mint Glo Dollars NFTs 💰\nFrame by @0x94t3z.eth";
 const embedUrl = "https://glo-dollars-nft.vercel.app/api/frame";
 
 const CAST_INTENS = `${baseUrl}?text=${encodeURIComponent(text)}&embeds[]=${encodeURIComponent(embedUrl)}`;
