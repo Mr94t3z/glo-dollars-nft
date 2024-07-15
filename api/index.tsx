@@ -39,7 +39,10 @@ const baseUrlNeynarV2 = process.env.BASE_URL_NEYNAR_V2 || 'https://api.neynar.co
 
 app.frame('/', (c) => {
   return c.res({
-    image: 'https://media.decentralized-content.com/-/rs:fit:1920:1920/aHR0cHM6Ly9tYWdpYy5kZWNlbnRyYWxpemVkLWNvbnRlbnQuY29tL2lwZnMvYmFmeWJlaWN4YjN6eGppdTJ1ZzZ1dTZlY3hoaWt2bzVyNDJyNzZrdWU3cWZocTdxeXdya3hmcW1sdnE',
+    headers: {
+      'cache-control': 'no-store, no-cache, must-revalidate, proxy-revalidate max-age=0, s-maxage=0',
+    },
+    image: 'https://imagedelivery.net/BXluQx4ige9GuW0Ia56BHw/7dd48b82-9e40-470e-340d-8cba0fcee700/original',
     intents: [
       <Button action="/verify">Mint NFT</Button>,
     ],
@@ -109,7 +112,10 @@ app.frame('/verify', async (c) => {
   } catch (error) {
     console.error('Error fetching user data:', error);
     return c.res({
-      image: 'https://media.decentralized-content.com/-/rs:fit:1920:1920/aHR0cHM6Ly9tYWdpYy5kZWNlbnRyYWxpemVkLWNvbnRlbnQuY29tL2lwZnMvYmFmeWJlaWN4YjN6eGppdTJ1ZzZ1dTZlY3hoaWt2bzVyNDJyNzZrdWU3cWZocTdxeXdya3hmcW1sdnE',
+      headers: {
+        'cache-control': 'no-store, no-cache, must-revalidate, proxy-revalidate max-age=0, s-maxage=0',
+      },
+      image: 'https://imagedelivery.net/BXluQx4ige9GuW0Ia56BHw/7dd48b82-9e40-470e-340d-8cba0fcee700/original',
       intents: [
         <Button action="/verify">Refresh</Button>,
         <Button.Link href="https://warpcast.com/glodollar">Follow @glodollar</Button.Link>,
