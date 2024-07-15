@@ -93,15 +93,7 @@ app.frame('/verify', async (c) => {
     const isRecast = cast.viewer_context.recasted;
 
     // Perform actions based on isFollowing
-    if (!isFollowing) {
-      return c.error({
-        message: 'You need to follow @glodollar first!',
-      });
-    } else if (!isRecast) {
-      return c.error({
-        message: 'You need to re-cast first!',
-      });
-    } else if (isFollowing && isRecast) {
+    if (isFollowing && isRecast) {
       return c.res({
         image: 'https://media.decentralized-content.com/-/rs:fit:1920:1920/aHR0cHM6Ly9tYWdpYy5kZWNlbnRyYWxpemVkLWNvbnRlbnQuY29tL2lwZnMvYmFmeWJlaWN4YjN6eGppdTJ1ZzZ1dTZlY3hoaWt2bzVyNDJyNzZrdWU3cWZocTdxeXdya3hmcW1sdnE',
         intents: [
@@ -111,18 +103,11 @@ app.frame('/verify', async (c) => {
             Mint
           </Button.Mint>,
         ],
-      });
+      })
     } else {
-      return c.res({
-        headers: {
-          'cache-control': 'no-store, no-cache, must-revalidate, proxy-revalidate max-age=0, s-maxage=0',
-        },
-        image: 'https://imagedelivery.net/BXluQx4ige9GuW0Ia56BHw/7dd48b82-9e40-470e-340d-8cba0fcee700/original',
-        intents: [
-          <Button action="/verify">Refresh</Button>,
-          <Button.Link href="https://warpcast.com/glodollar">Follow @glodollar</Button.Link>,
-        ],
-      });
+      return c.error( {
+        message: 'You need to re-cast & follow @glodollar first!',
+      })
     }
   } catch (error) {
     console.error('Error fetching user data:', error);
@@ -136,7 +121,7 @@ app.frame('/verify', async (c) => {
         <Button.Link href="https://warpcast.com/glodollar">Follow @glodollar</Button.Link>,
       ],
     })
-  }
+}
 })
 
 // Uncomment for local server testing
