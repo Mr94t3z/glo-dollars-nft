@@ -19,7 +19,7 @@ export const app = new Frog({
   basePath: '/api/frame',
   title: 'Glo Dollars NFTs',
   imageAspectRatio: '1:1',
-  browserLocation: CAST_INTENS,
+  browserLocation: 'https://zora.co/collect/base:0xad7014cbf4e9bf1731cc232ec93448965cd1f77d/2',
   headers: {
     'cache-control': 'no-store, no-cache, must-revalidate, proxy-revalidate max-age=0, s-maxage=0',
   },
