@@ -53,6 +53,7 @@ app.frame('/', (c) => {
     image: '/introduction',
     intents: [
       <Button action="/verify">Mint NFT</Button>,
+      <Button.Link href={CAST_INTENS}>Share</Button.Link>,
     ],
   })
 })
@@ -66,7 +67,7 @@ app.image('/introduction', (c) => {
     image: (
       <Box
           alignVertical="center"
-          backgroundImage="url(https://imagedelivery.net/BXluQx4ige9GuW0Ia56BHw/7dd48b82-9e40-470e-340d-8cba0fcee700/original)"
+          backgroundImage="url(https://media.decentralized-content.com/-/rs:fit:1920:1920/aHR0cHM6Ly9tYWdpYy5kZWNlbnRyYWxpemVkLWNvbnRlbnQuY29tL2lwZnMvYmFmeWJlaWRkbHJrM3R1b2RvdGdzYnhxc3hseHVteGd2bWZsa2Nma2R2Mm5xZnluemN2bWszdWJkM2U)"
           backgroundSize="100% 100%"
           height="100%"
           width="100%"
@@ -121,10 +122,10 @@ app.frame('/verify', async (c) => {
     // Perform actions based on isFollowing
     if (isFollowing) {
       return c.res({
-        image: 'https://media.decentralized-content.com/-/rs:fit:1920:1920/aHR0cHM6Ly9tYWdpYy5kZWNlbnRyYWxpemVkLWNvbnRlbnQuY29tL2lwZnMvYmFmeWJlaWN4YjN6eGppdTJ1ZzZ1dTZlY3hoaWt2bzVyNDJyNzZrdWU3cWZocTdxeXdya3hmcW1sdnE',
+        image: 'https://media.decentralized-content.com/-/rs:fit:1920:1920/aHR0cHM6Ly9tYWdpYy5kZWNlbnRyYWxpemVkLWNvbnRlbnQuY29tL2lwZnMvYmFmeWJlaWRkbHJrM3R1b2RvdGdzYnhxc3hseHVteGd2bWZsa2Nma2R2Mm5xZnluemN2bWszdWJkM2U',
         intents: [
           <Button.Mint
-            target="eip155:8453:0xad7014cbf4e9bf1731cc232ec93448965cd1f77d:1"
+            target="eip155:8453:0xad7014cbf4e9bf1731cc232ec93448965cd1f77d:2"
           >
             Mint
           </Button.Mint>,
@@ -141,7 +142,7 @@ app.frame('/verify', async (c) => {
       headers: {
         'cache-control': 'no-store, no-cache, must-revalidate, proxy-revalidate max-age=0, s-maxage=0',
       },
-      image: 'https://imagedelivery.net/BXluQx4ige9GuW0Ia56BHw/7dd48b82-9e40-470e-340d-8cba0fcee700/original',
+      image: 'https://media.decentralized-content.com/-/rs:fit:1920:1920/aHR0cHM6Ly9tYWdpYy5kZWNlbnRyYWxpemVkLWNvbnRlbnQuY29tL2lwZnMvYmFmeWJlaWRkbHJrM3R1b2RvdGdzYnhxc3hseHVteGd2bWZsa2Nma2R2Mm5xZnluemN2bWszdWJkM2U',
       intents: [
         <Button action="/verify">Refresh</Button>,
         <Button.Link href="https://warpcast.com/glodollar">Follow @glodollar</Button.Link>,
