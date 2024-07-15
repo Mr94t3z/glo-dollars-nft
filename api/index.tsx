@@ -6,11 +6,20 @@ import { handle } from 'frog/vercel'
 // import { devtools } from 'frog/dev';
 // import { serveStatic } from 'frog/serve-static';
 
+
+const baseUrl = "https://warpcast.com/~/compose";
+const text = "Mint Glo Dollars NFTs 🍄\nFrame by @0x94t3z.eth";
+const embedUrl = "https://glo-dollars-nft.vercel.app/api/frame";
+
+const CAST_INTENS = `${baseUrl}?text=${encodeURIComponent(text)}&embeds[]=${encodeURIComponent(embedUrl)}`;
+
+
 export const app = new Frog({
   assetsPath: '/',
   basePath: '/api/frame',
   title: 'Glo Dollars NFTs',
   imageAspectRatio: '1:1',
+  browserLocation: CAST_INTENS,
   headers: {
     'cache-control': 'no-store, no-cache, must-revalidate, proxy-revalidate max-age=0, s-maxage=0',
   },
