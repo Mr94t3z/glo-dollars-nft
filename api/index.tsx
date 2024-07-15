@@ -1,11 +1,6 @@
 import { Button, Frog } from 'frog'
 import { neynar } from 'frog/middlewares'
 import { handle } from 'frog/vercel'
-import { 
-  Box,
-  vars 
-} from "../lib/ui.js";
-
 
 // Uncomment this packages to tested on local server
 // import { devtools } from 'frog/dev';
@@ -13,7 +8,7 @@ import {
 
 
 const baseUrl = "https://warpcast.com/~/compose";
-const text = "Mint Glo Dollars NFTs 💰\nFrame by @0x94t3z.eth";
+const text = "Let's fund more public goods.\n\nMint ↓\n\nFrame by @glodollar & @0x94t3z.eth";
 const embedUrl = "https://glo-dollars-nft.vercel.app/api/frame";
 
 const CAST_INTENS = `${baseUrl}?text=${encodeURIComponent(text)}&embeds[]=${encodeURIComponent(embedUrl)}`;
@@ -24,7 +19,6 @@ export const app = new Frog({
   basePath: '/api/frame',
   title: 'Glo Dollars NFTs',
   imageAspectRatio: '1:1',
-  ui: { vars },
   browserLocation: CAST_INTENS,
   headers: {
     'cache-control': 'no-store, no-cache, must-revalidate, proxy-revalidate max-age=0, s-maxage=0',
@@ -50,29 +44,11 @@ app.frame('/', (c) => {
     headers: {
       'cache-control': 'no-store, no-cache, must-revalidate, proxy-revalidate max-age=0, s-maxage=0',
     },
-    image: '/introduction',
+    image: 'https://media.decentralized-content.com/-/rs:fit:1920:1920/aHR0cHM6Ly9tYWdpYy5kZWNlbnRyYWxpemVkLWNvbnRlbnQuY29tL2lwZnMvYmFmeWJlaWRkbHJrM3R1b2RvdGdzYnhxc3hseHVteGd2bWZsa2Nma2R2Mm5xZnluemN2bWszdWJkM2U',
     intents: [
       <Button action="/verify">Mint NFT</Button>,
       <Button.Link href={CAST_INTENS}>Share</Button.Link>,
     ],
-  })
-})
-
-
-app.image('/introduction', (c) => {
-  return c.res({
-    headers: {
-      'cache-control': 'no-store, no-cache, must-revalidate, proxy-revalidate max-age=0, s-maxage=0',
-    },
-    image: (
-      <Box
-          alignVertical="center"
-          backgroundImage="url(https://media.decentralized-content.com/-/rs:fit:1920:1920/aHR0cHM6Ly9tYWdpYy5kZWNlbnRyYWxpemVkLWNvbnRlbnQuY29tL2lwZnMvYmFmeWJlaWRkbHJrM3R1b2RvdGdzYnhxc3hseHVteGd2bWZsa2Nma2R2Mm5xZnluemN2bWszdWJkM2U)"
-          backgroundSize="100% 100%"
-          height="100%"
-          width="100%"
-        />
-    ),
   })
 })
 
