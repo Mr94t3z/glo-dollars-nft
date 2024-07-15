@@ -32,7 +32,7 @@ app.frame('/', (c) => {
   return c.res({
     image: 'https://media.decentralized-content.com/-/rs:fit:1920:1920/aHR0cHM6Ly9tYWdpYy5kZWNlbnRyYWxpemVkLWNvbnRlbnQuY29tL2lwZnMvYmFmeWJlaWN4YjN6eGppdTJ1ZzZ1dTZlY3hoaWt2bzVyNDJyNzZrdWU3cWZocTdxeXdya3hmcW1sdnE',
     intents: [
-      <Button action="/verify">Mint</Button>,
+      <Button action="/verify">Mint NFT</Button>,
     ],
   })
 })
