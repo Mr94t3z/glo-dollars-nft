@@ -1,6 +1,11 @@
 import { Button, Frog } from 'frog'
 import { neynar } from 'frog/middlewares'
 import { handle } from 'frog/vercel'
+import { 
+  Box,
+  vars 
+} from "../lib/ui.js";
+
 
 // Uncomment this packages to tested on local server
 // import { devtools } from 'frog/dev';
@@ -19,6 +24,7 @@ export const app = new Frog({
   basePath: '/api/frame',
   title: 'Glo Dollars NFTs',
   imageAspectRatio: '1:1',
+  ui: { vars },
   browserLocation: CAST_INTENS,
   headers: {
     'cache-control': 'no-store, no-cache, must-revalidate, proxy-revalidate max-age=0, s-maxage=0',
@@ -34,18 +40,38 @@ export const app = new Frog({
   }),
 )
 
+
 // Neynar API base URL
 const baseUrlNeynarV2 = process.env.BASE_URL_NEYNAR_V2 || 'https://api.neynar.com/v2/farcaster';
+
 
 app.frame('/', (c) => {
   return c.res({
     headers: {
       'cache-control': 'no-store, no-cache, must-revalidate, proxy-revalidate max-age=0, s-maxage=0',
     },
-    image: 'https://imagedelivery.net/BXluQx4ige9GuW0Ia56BHw/7dd48b82-9e40-470e-340d-8cba0fcee700/original',
+    image: '/introduction',
     intents: [
       <Button action="/verify">Mint NFT</Button>,
     ],
+  })
+})
+
+
+app.image('/introduction', (c) => {
+  return c.res({
+    headers: {
+      'cache-control': 'no-store, no-cache, must-revalidate, proxy-revalidate max-age=0, s-maxage=0',
+    },
+    image: (
+      <Box
+          alignVertical="center"
+          backgroundImage="url(https://imagedelivery.net/BXluQx4ige9GuW0Ia56BHw/7dd48b82-9e40-470e-340d-8cba0fcee700/original)"
+          backgroundSize="100% 100%"
+          height="100%"
+          width="100%"
+        />
+    ),
   })
 })
 
@@ -124,8 +150,10 @@ app.frame('/verify', async (c) => {
 }
 })
 
+
 // Uncomment for local server testing
 // devtools(app, { serveStatic });
+
 
 export const GET = handle(app)
 export const POST = handle(app)
