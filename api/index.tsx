@@ -78,7 +78,7 @@ app.image('/introduction', (c) => {
 
 app.frame('/verify', async (c) => {
   const { fid } = c.var.interactor || {}
-  const { hash } = c.var.cast || {}
+  // const { hash } = c.var.cast || {}
 
   try {
     // Fetch the user's data from Neynar API
@@ -95,31 +95,31 @@ app.frame('/verify', async (c) => {
       throw new Error(`Neynar API responded with status: ${userResponse.status}`);
     }
 
-    const castResponse = await fetch(`${baseUrlNeynarV2}/casts?casts=${hash}&viewer_fid=${fid}`, {
-      method: 'GET',
-      headers: {
-        'accept': 'application/json',
-        'api_key': process.env.NEYNAR_API_KEY || 'NEYNAR_API_DOCS',
-      },
-    });
+    // const castResponse = await fetch(`${baseUrlNeynarV2}/casts?casts=${hash}&viewer_fid=${fid}`, {
+    //   method: 'GET',
+    //   headers: {
+    //     'accept': 'application/json',
+    //     'api_key': process.env.NEYNAR_API_KEY || 'NEYNAR_API_DOCS',
+    //   },
+    // });
 
-    // Check if the response is okay
-    if (!castResponse.ok) {
-      throw new Error(`Neynar API responded with status: ${castResponse.status}`);
-    }
+    // // Check if the response is okay
+    // if (!castResponse.ok) {
+    //   throw new Error(`Neynar API responded with status: ${castResponse.status}`);
+    // }
 
     const userData = await userResponse.json();
     const user = userData.users[0];
 
     const isFollowing = user.viewer_context.following;
 
-    const castData = await castResponse.json();
-    const cast = castData.result.casts[0];
+    // const castData = await castResponse.json();
+    // const cast = castData.result.casts[0];
 
-    const isRecast = cast.viewer_context.recasted;
+    // const isRecast = cast.viewer_context.recasted;
 
     // Perform actions based on isFollowing
-    if (isFollowing && isRecast) {
+    if (isFollowing) {
       return c.res({
         image: 'https://media.decentralized-content.com/-/rs:fit:1920:1920/aHR0cHM6Ly9tYWdpYy5kZWNlbnRyYWxpemVkLWNvbnRlbnQuY29tL2lwZnMvYmFmeWJlaWN4YjN6eGppdTJ1ZzZ1dTZlY3hoaWt2bzVyNDJyNzZrdWU3cWZocTdxeXdya3hmcW1sdnE',
         intents: [
@@ -132,7 +132,7 @@ app.frame('/verify', async (c) => {
       })
     } else {
       return c.error( {
-        message: 'You need to re-cast & follow @glodollar first!',
+        message: '⚠️ You need to follow @glodollar first!',
       })
     }
   } catch (error) {
