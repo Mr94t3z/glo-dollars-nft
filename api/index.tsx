@@ -133,7 +133,7 @@ app.frame('/verify', async (c) => {
       })
     } else {
       return c.error( {
-        message: 'You need to follow @glodollar first.',
+        message: 'You need to follow @glodollar to mint. It may take up to 1 minute to process.',
       })
     }
   } catch (error) {
