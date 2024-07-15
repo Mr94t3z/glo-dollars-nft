@@ -132,7 +132,7 @@ app.frame('/verify', async (c) => {
       })
     } else {
       return c.error( {
-        message: '⚠️ You need to follow @glodollar first!',
+        message: 'You need to follow @glodollar first.',
       })
     }
   } catch (error) {
